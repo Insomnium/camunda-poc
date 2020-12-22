@@ -1,4 +1,4 @@
-package net.ins.bpm.camundapoc.service
+package net.ins.bpm.camundapoc.greeting.service
 
 import org.camunda.bpm.engine.RuntimeService
 import org.springframework.stereotype.Service

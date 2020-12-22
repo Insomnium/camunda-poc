@@ -24,7 +24,7 @@
     <bpmn:sequenceFlow id="Flow_1y9yd7x" sourceRef="Event_1u7zbh6" targetRef="Activity_1emmlwv" />
     <bpmn:task id="Activity_1emmlwv" name="Say hi">
       <bpmn:extensionElements>
-        <camunda:executionListener class="net.ins.bpm.camundapoc.delegate.GreetingDelegate" event="start" />
+        <camunda:executionListener class="net.ins.bpm.camundapoc.greeting.delegate.GreetingDelegate" event="start" />
         <camunda:inputOutput>
           <camunda:inputParameter name="name">${name}</camunda:inputParameter>
         </camunda:inputOutput>

@@ -1,6 +1,6 @@
-package net.ins.bpm.camundapoc.rest
+package net.ins.bpm.camundapoc.greeting.web
 
-import net.ins.bpm.camundapoc.service.GreetingService
+import net.ins.bpm.camundapoc.greeting.service.GreetingService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 

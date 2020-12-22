@@ -1,4 +1,4 @@
-package net.ins.bpm.camundapoc.delegate
+package net.ins.bpm.camundapoc.greeting.delegate
 
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.JavaDelegate
