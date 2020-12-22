@@ -19,7 +19,7 @@ class ProgramSelectorDelegate(
 
     override fun postExecute(execution: DelegateExecution) {
         logger.info { "determining program for businessKey: ${execution.businessKey}" }
-        val programType = programService.defineProgram(execution.getUserId()).name
+        val programType = programService.defineProgram(execution.getUserId())
 //        execution.variables[BusinessProcessConstants.PROGRAM_ID] = programType
         execution.setVariable(BusinessProcessConstants.PROGRAM_ID, programType)
     }
