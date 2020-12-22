@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: camunda-poc
+  profiles:
+    active: dev
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/camunda_poc
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+camunda:
+  bpm:
+    admin-user:
+      id: demo
+      password: demo
+
+

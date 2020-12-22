@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0np1y17" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.4.0">
+  <bpmn:process id="sample_process" isExecutable="true" camunda:versionTag="2">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0m4foqm</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_0iqy11j">
+      <bpmn:incoming>Flow_13irlw8</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0m4foqm" sourceRef="StartEvent_1" targetRef="Event_1u7zbh6" />
+    <bpmn:sequenceFlow id="Flow_13irlw8" sourceRef="Activity_1emmlwv" targetRef="Event_0iqy11j" />
+    <bpmn:intermediateCatchEvent id="Event_1u7zbh6">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="timeout">${timeout}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0m4foqm</bpmn:incoming>
+      <bpmn:outgoing>Flow_1y9yd7x</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1ejz1pm">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">${timeout}</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_1y9yd7x" sourceRef="Event_1u7zbh6" targetRef="Activity_1emmlwv" />
+    <bpmn:task id="Activity_1emmlwv" name="Say hi">
+      <bpmn:extensionElements>
+        <camunda:executionListener class="net.ins.bpm.camundapoc.delegate.GreetingDelegate" event="start" />
+        <camunda:inputOutput>
+          <camunda:inputParameter name="name">${name}</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1y9yd7x</bpmn:incoming>
+      <bpmn:outgoing>Flow_13irlw8</bpmn:outgoing>
+    </bpmn:task>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="sample_process">
+      <bpmndi:BPMNEdge id="Flow_1y9yd7x_di" bpmnElement="Flow_1y9yd7x">
+        <di:waypoint x="598" y="120" />
+        <di:waypoint x="800" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13irlw8_di" bpmnElement="Flow_13irlw8">
+        <di:waypoint x="900" y="120" />
+        <di:waypoint x="1032" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0m4foqm_di" bpmnElement="Flow_0m4foqm">
+        <di:waypoint x="215" y="120" />
+        <di:waypoint x="562" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0iqy11j_di" bpmnElement="Event_0iqy11j">
+        <dc:Bounds x="1032" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ms2q5t_di" bpmnElement="Event_1u7zbh6">
+        <dc:Bounds x="562" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0zk5ggc_di" bpmnElement="Activity_1emmlwv">
+        <dc:Bounds x="800" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
