@@ -1,19 +1,19 @@
 package net.ins.bpm.camundapoc.postloan.delegate.docs
 
 import mu.KotlinLogging
-import net.ins.bpm.camundapoc.postloan.delegate.AbstractClientPathDelegate
-import net.ins.bpm.camundapoc.postloan.service.ClientPathStateService
+import net.ins.bpm.camundapoc.postloan.process.BusinessProcessConstants
 import org.camunda.bpm.engine.delegate.DelegateExecution
+import org.camunda.bpm.engine.delegate.JavaDelegate
 import org.springframework.stereotype.Component
 
 @Component
-class DocumentsManualUploadingDelegate(
-        clientPathStateService: ClientPathStateService
-) : AbstractClientPathDelegate(clientPathStateService) {
+class DocumentsManualUploadingDelegate : JavaDelegate {
 
     private val logger = KotlinLogging.logger {  }
 
-    override fun postExecute(execution: DelegateExecution) {
-        logger.info { "manually uploading documents..." }
+    override fun execute(execution: DelegateExecution) {
+        logger.info { "Checking manual docs uploading state" }
+        var debug = false
+        execution.setVariable(BusinessProcessConstants.DOCS_UPLOAD_COMPLETE, debug)
     }
 }
