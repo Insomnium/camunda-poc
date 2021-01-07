@@ -1,6 +1,8 @@
 spring:
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
+  jpa:
+    show-sql: true
 
 # TODO: lag occurs when default value is set. Documentation says settings below could cause high DB load
 # TODO: investigate concern
@@ -8,3 +10,13 @@ camunda:
   bpm:
     job-execution:
       max-wait: 1000
+
+
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE

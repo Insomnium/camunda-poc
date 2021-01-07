@@ -10,6 +10,6 @@ class ClientPathStatusDelegate(
         private val clientPathStateService: ClientPathStateService
 ) : JavaDelegate {
     override fun execute(execution: DelegateExecution) {
-        clientPathStateService.setClientPathState(execution.getUserId(), execution.getClientPathStatus())
+        clientPathStateService.setClientPathState(execution.getClientId(), execution.getClientPathStatus())
     }
 }

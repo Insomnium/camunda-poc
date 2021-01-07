@@ -1,4 +1,4 @@
-package net.ins.bpm.camundapoc
+package net.ins.bpm.camundapoc.postloan
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

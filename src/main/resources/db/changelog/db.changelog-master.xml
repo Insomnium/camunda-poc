@@ -7,4 +7,66 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
+    <changeSet id="init_client_path_state_table" author="ins137@gmail.com">
+        <createTable tableName="client_path_state">
+            <column name="id" type="character varying">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+        </createTable>
+
+        <insert tableName="client_path_state">
+            <column name="id" value="STARTED" />
+        </insert>
+        <insert tableName="client_path_state">
+            <column name="id" value="ONBOARDED" />
+        </insert>
+        <insert tableName="client_path_state">
+            <column name="id" value="DOCS_UPLOADING" />
+        </insert>
+        <insert tableName="client_path_state">
+            <column name="id" value="DOCS_UPLOADED" />
+        </insert>
+        <insert tableName="client_path_state">
+            <column name="id" value="DOCS_RETRIEVAL" />
+        </insert>
+        <insert tableName="client_path_state">
+            <column name="id" value="COMPLETE" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="create_client_state_tables" author="ins137@gmail.com">
+        <createTable tableName="client_state">
+            <column name="id" type="varchar(10)">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="path_state" type="character varying">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="client_state" baseColumnNames="path_state"
+                                 constraintName="client_state_to_client_path_state_fk"
+                                 referencedTableName="client_path_state"
+                                 referencedColumnNames="id" />
+    </changeSet>
+
+    <changeSet id="create_docs_table" author="ins137@gmail.com">
+        <createTable tableName="documents">
+            <column name="id" type="bigserial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="client_id" type="varchar(10)" >
+                <constraints nullable="false" />
+            </column>
+            <column name="file_name" type="character varying" >
+                <constraints nullable="false" />
+            </column>
+<!--            TODO: blob-->
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="documents" baseColumnNames="client_id"
+                                 constraintName="documents_to_client_state_fk"
+                                 referencedTableName="client_state"
+                                 referencedColumnNames="id" />
+    </changeSet>
 </databaseChangeLog>
