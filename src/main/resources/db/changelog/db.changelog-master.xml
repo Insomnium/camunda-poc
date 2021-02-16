@@ -69,4 +69,10 @@
                                  referencedTableName="client_state"
                                  referencedColumnNames="id" />
     </changeSet>
+
+    <changeSet id="extend_client_state_status_model_0" author="ins137@gmail.com">
+        <insert tableName="client_path_state">
+            <column name="id" value="DOCS_RECOGNITION_CONFIRMATION" />
+        </insert>
+    </changeSet>
 </databaseChangeLog>
